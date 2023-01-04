@@ -6,15 +6,17 @@ export function Footer(props) {
   <div className={style.container}>
     {console.log("object")}
     <div className={style.buttons}>
-      <button onClick={() => props.setCurrentPage(1)}>First</button>
+      <button className={style.btn} onClick={() => props.setCurrentPage(props.emojiesFiltred.slice(0, props.emojiesPerPage))}>First</button>
     
   {props.pagesNumbers.map((elem, index) => {
 return (
-  <button onClick={() => props.setCurrentPage(elem)}key={elem}>{elem}</button>
+  <button className={style.btn} onClick={() => props.setCurrentPage(props.emojiesFiltred.slice((elem - 1) * props.emojiesPerPage, props.emojiesPerPage + (elem-1) * props.emojiesPerPage))}key={elem}>{elem}</button>
 )
   })}
 
-      <button onClick={() => props.setCurrentPage(props.pagesNumbers.length)}>Last</button>
+      <button className={style.btn} onClick={() => {props.setCurrentPage(props.emojiesFiltred.slice((props.pagesNumbers.length) * props.emojiesPerPage, props.emojiesFiltred.length)
+      )}
+      }>Last</button>
 </div>
       <div>
       <p>Per page</p>
